@@ -44,6 +44,6 @@ Description: The shipment has been handed in to Bring.
 ----
 ```
 ## Requirements
-- Pyton3 
+- Python 3 
 - Requests library installed 
 - sys library installed 
