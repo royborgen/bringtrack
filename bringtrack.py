@@ -2,7 +2,7 @@
 import requests
 import sys
 
-#A function that fetches a json containing tracking info from Bring
+#A function that fetches a json containing tracking info from Bring (Posten) 
 def traceit(parcel):
     connection = True
     url = "https://sporing.posten.no"
