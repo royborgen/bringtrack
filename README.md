@@ -7,7 +7,7 @@ The scripts needs a tracking number as agument.
 ./bringtrack [TRACKING_NUMBER]
 ```
 ## Output
-
+```
 Looking up tracking detail for XXXXXXXXXXXXXX
 
 Tracking details for XXXXXXXXXXXXXX
@@ -42,7 +42,7 @@ Location: 5341 STRAUME, Norway
 Status: HANDED_IN
 Description: The shipment has been handed in to Bring.
 ----
-
+```
 ## Requirements
 - Pyton3 
 - Requests library installed 
