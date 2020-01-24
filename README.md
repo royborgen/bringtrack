@@ -1,5 +1,5 @@
 # BringTrack
-BringTrack is a script that uses bring.no's API to track parcels sent via Bring, the mail postal provider in Norway. 
+BringTrack is a script that uses bring.no's API to track parcels sent via Bring (Norwegian post), the mail postal provider in Norway. 
 
 ## Usage
 The scripts needs a tracking number as agument. 
