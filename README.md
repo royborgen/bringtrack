@@ -8,4 +8,6 @@ The scripts needs a tracking number as agument.
 ```
 
 ## Requirements
-Requires Pyton3, requests and sys libraries installed 
+- Pyton3 
+- Requests library installed 
+- sys library installed 
