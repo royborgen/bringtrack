@@ -1,4 +1,4 @@
-# BringTrack
+# BringTrack v1.0
 BringTrack is a script that lets you track packages sent or handeled by Bring (Norwegian postal service). The script uses Bring's own API to fetch details. 
 
 ## Usage
