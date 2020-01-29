@@ -2,7 +2,7 @@
 import requests
 import sys
 
-#A function that fetches a json containing tracking info from Bring (Posten) 
+#A function that fetches a json containing tracking info from Bring
 def traceit(parcel):
     connection = True
     url = "https://sporing.posten.no"
@@ -48,6 +48,7 @@ def main():
         if result == False:
             print ("No tracking information found for " + parcel)
         else: 
+            history = []
             #Prints detail
             print("\nTracking details for " + parcel)
             print("___________________________________________")
@@ -64,15 +65,33 @@ def main():
                     print("___________________________________________\n")
                     print("\nHistory:")
                     print("-------------------------------------------") 
+                    i = 0
                     for eventSet in PackageSet["eventSet"]:
-                    
-                        print(eventSet["displayDate"] + " " + eventSet["displayTime"])  
-                        print("Location: " + eventSet["postalCode"] + " " + eventSet["city"] + ", " + eventSet["country"]) 
-                        print("Status: " + eventSet["status"]) 
-                        print("Description: " + eventSet["description"])
-                        print("----") 
+                        history.append([])
+                        history[i].append(eventSet["displayDate"] + " " + eventSet["displayTime"])
+                        
+                        #checking if location has value, setting Location N/A if not
+                        if eventSet["city"] != "":
+                            history[i].append("Location: "+ eventSet["postalCode"] + " " + eventSet["city"] + ", " + eventSet["country"])
 
-
+                        history[i].append("Status: " + eventSet["status"]) 
+                        description = eventSet["description"]
+                        
+                        #checking if description contains http (an url) 
+                        if description.find("http") == -1:
+                            history[i].append("Description: " + description) 
+                        else: 
+                            #removing html tags and url
+                            description = description[0:description.find("<")] + description[description.rfind('">')+2:description.rfind("<")]
+                            history[i].append("Description: " + description)
+                        i += 1
+            
+            #printing the history in reverse order to get last one in bottom of screen
+            for event in reversed(history):
+                for item in event: 
+                    print(item)
+                print("---") 
+                 
 #Calling the main function
 if __name__ == "__main__":
     main()
