@@ -70,7 +70,7 @@ def main():
                         history.append([])
                         history[i].append(eventSet["displayDate"] + " " + eventSet["displayTime"])
                         
-                        #checking if location has value, setting Location N/A if not
+                        #only prints location if "city" has value
                         if eventSet["city"] != "":
                             history[i].append("Location: "+ eventSet["postalCode"] + " " + eventSet["city"] + ", " + eventSet["country"])
 
