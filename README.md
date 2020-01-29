@@ -22,21 +22,21 @@ ___________________________________________
 
 History:
 -------------------------------------------
-24.01.2020 10:48
-Location: 0024 OSLO, Norway
-Status: IN_TRANSIT
-Description: The shipment is in transit
-----
-24.01.2020 06:06
-Location: 0024 OSLO, Norway
-Status: IN_TRANSIT
-Description: The shipment has been sorted and forwarded.
-----
+23.01.2020 14:04
+Location: 5341 STRAUME, Norway
+Status: HANDED_IN
+Description: The shipment has been handed in to Bring.
+---
 23.01.2020 18:47
 Location: 5020 BERGEN, Norway
 Status: IN_TRANSIT
 Description: The shipment has been handed in at terminal and forwarded.
-----
+---
+24.01.2020 06:06
+Location: 0024 OSLO, Norway
+Status: IN_TRANSIT
+Description: The shipment has been sorted and forwarded.
+---
 23.01.2020 14:04
 Location: 5341 STRAUME, Norway
 Status: HANDED_IN
