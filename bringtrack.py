@@ -4,7 +4,7 @@ import sys
 
 #a function that checks commandline arguments and displays help
 def checkarg(arg):
-    version = "BringTrack 1.2"
+    version = "BringTrack 2.0"
     helptxt = """Usage: bringtrack [OPTION]... [TRACKING NUMBER]...
 Fetches parcel tracking information from Bring.
 
