@@ -24,7 +24,7 @@ bringtrack -a 1234567890   Outputs all parcel details for parcel 1234567890
 ```
 Fetching data from Bring...
 
-Latest history for KP108976165NO
+Latest history for 1234567890
 ----------------------------------------
 28.01.2020 18:32
 Status: DELIVERED
