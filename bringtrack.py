@@ -2,6 +2,7 @@
 import requests
 import sys
 
+#a function that checks commandline arguments and displays help
 def checkarg(arg):
     version = "BringTrack 1.2"
     helptxt = """Usage: bringtrack [OPTION]... [TRACKING NUMBER]...
@@ -94,9 +95,7 @@ def output(arg, result):
             allpacks[numPackages].append("Dimentions: " + str(PackageSet["lengthInCm"]) +" x " + str(PackageSet["widthInCm"]) + " x " + str(PackageSet["heightInCm"]) + " cm")
             allpacks[numPackages].append("Total volume: " + str(PackageSet["volumeInDm3"]) + " dm3") 
             i = 1
-            #history.append([])
-            #history.setdefault(numPackages,[])
-            #history[numPackages].append("Parcel number: " + PackageSet["packageNumber"])
+            #Looping through events and adding results to dict
             packageNumber = PackageSet["packageNumber"]
             history.setdefault(packageNumber,[])
             for eventSet in PackageSet["eventSet"]:
@@ -121,6 +120,7 @@ def output(arg, result):
                 i += 1
             numPackages +=1
     
+    #print consignment details if argument -c or -a is given
     if arg == "-c" or arg == "-a":
         print("Consignment details:")
         print("----------------------------------------")
@@ -130,7 +130,8 @@ def output(arg, result):
         print("Total volume: " + totalVolume + " dm3")
         print("----------------------------------------") 
         print("")
-    
+
+    #print package details if -d or -a is given as argument 
     if arg == "-d" or arg == "-a":
         print("Shipment contains " + str(numPackages) + " package(s):") 
         print("----------------------------------------") 
@@ -139,31 +140,37 @@ def output(arg, result):
                 print(packdetail) 
             print("---") 
         print("")
-
-    if arg == "-h" or arg == "-a" or arg == True: 
+    
+    #prints history of -h or -a is given as argument
+    if arg == "-h" or arg == "-a" or arg == True:
         if arg == "-h" or arg =="-a": 
             for parcel, detail in history.items():
                 print("Tracking history for " + parcel)
                 print("----------------------------------------") 
+                #looping through in reversed order to get latest at bottom of screen
                 for value in reversed(detail):
                     if isinstance(value, int) == True: 
                         print("---")
                     else: 
                         print(value)
                 print("") 
+        #if no argument, prints latest history
         else:
             latest = False
             for parcel, detail in history.items():
                 print("Latest history for " + parcel)
                 print("----------------------------------------")
-             
+                #looping through in reversed order to get latest at bottom of screen
                 for value in reversed(detail):
+                    #2 indicates start of latest tracking
                     if value == 2:
                         latest = True
                     else: 
+                        #well print event number
                         if latest == True and value !=1: 
                             print(value)
-                        if value == 1: 
+                        if value == 1:
+                            #adds --- for display purposes
                             print("---")
                 print("")
                 latest = False 
