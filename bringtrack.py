@@ -21,11 +21,12 @@ Example:
 bringtrack 1234567890      Outputs latest tracking details for parcel 1234567890
 bringtrack -a 1234567890   Outputs all parcel details for parcel 1234567890"""
 
-    usage = """Usage: bringtrack [OPTION]... [TRACKING]...
+    usage = """Usage: bringtrack [OPTION]... [TRACKING NUMBER]...
 Try 'bringtrack --help' for more information."""
 
     if len(arg) ==1: 
-        return True
+        print(usage) 
+        return False
     elif len(arg) ==2:
         if str.startswith(str(arg[1]), "--") == True or str.startswith(str(arg[1]), "-") == True: 
             if str(arg[1]) =="--help":
