@@ -161,18 +161,25 @@ def output(arg, result):
             for parcel, detail in history.items():
                 print("Latest history for " + parcel)
                 print("----------------------------------------")
+                
+                #check list lenght to print out latest history even if there is only one entry
+                #This was a problem for parcels that was not yet shipped but bring was notified og coming shipment
+                if len(detail) == 4: 
+                    latest=True
+
                 #looping through in reversed order to get latest at bottom of screen
                 for value in reversed(detail):
                     #2 indicates start of latest tracking
                     if value == 2:
                         latest = True
                     else: 
-                        #well print event number
-                        if latest == True and value !=1: 
+                        #won't print event number
+                        if latest == True and value !=1:
                             print(value)
                         if value == 1:
                             #adds --- for display purposes
                             print("---")
+
                 print("")
                 latest = False 
 
