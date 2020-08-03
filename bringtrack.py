@@ -175,7 +175,7 @@ def output(arg, result):
                         latest = True
                     else: 
                         #won't print event number
-                        if latest == True and value !=1:
+                        if latest == True:
                             print(value)
                 print("---") 
                 latest = False 
