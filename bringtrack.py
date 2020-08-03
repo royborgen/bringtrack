@@ -101,7 +101,6 @@ def output(arg, result):
             history.setdefault(packageNumber,[])
             for eventSet in PackageSet["eventSet"]:
                 #adding --- to seperate different events
-                history[packageNumber].append(i)
                 description = eventSet["description"] 
                 #checking if description contains http (an url) 
                 if description.find("http") == -1:
@@ -118,6 +117,8 @@ def output(arg, result):
                     history[packageNumber].append("Location: "+ eventSet["postalCode"] + " " + eventSet["city"] + ", " + eventSet["country"])
                 
                 history[packageNumber].append(eventSet["displayDate"] + " " + eventSet["displayTime"])
+                #adding a number to keep track events (locate latest)
+                history[packageNumber].append(i)
                 i += 1
             numPackages +=1
     
@@ -132,14 +133,14 @@ def output(arg, result):
         print("----------------------------------------") 
         print("")
 
-    #print package details if -d or -a is given as argument 
+    #package details if -d or -a is given as argument 
     if arg == "-d" or arg == "-a":
         print("Shipment contains " + str(numPackages) + " package(s):") 
         print("----------------------------------------") 
         for details in allpacks:
             for packdetail in details:
                 print(packdetail) 
-            print("---") 
+            #print("---") 
         print("")
     
     #prints history of -h or -a is given as argument
@@ -149,12 +150,17 @@ def output(arg, result):
                 print("Tracking history for " + parcel)
                 print("----------------------------------------") 
                 #looping through in reversed order to get latest at bottom of screen
+                i=1
                 for value in reversed(detail):
-                    if isinstance(value, int) == True: 
-                        print("---")
+                    if isinstance(value, int) == True:
+                        if i==1: 
+                            print("")
+                        else: 
+                            print("---")
                     else: 
                         print(value)
-                print("") 
+                    i+=1
+                print("---") 
         #if no argument, prints latest history
         else:
             latest = False
@@ -162,25 +168,16 @@ def output(arg, result):
                 print("Latest history for " + parcel)
                 print("----------------------------------------")
                 
-                #check list lenght to print out latest history even if there is only one entry
-                #This was a problem for parcels that was not yet shipped but bring was notified og coming shipment
-                if len(detail) == 4: 
-                    latest=True
-
                 #looping through in reversed order to get latest at bottom of screen
                 for value in reversed(detail):
-                    #2 indicates start of latest tracking
-                    if value == 2:
+                    #1 indicates start of latest tracking
+                    if value == 1:
                         latest = True
                     else: 
                         #won't print event number
                         if latest == True and value !=1:
                             print(value)
-                        if value == 1:
-                            #adds --- for display purposes
-                            print("---")
-
-                print("")
+                print("---") 
                 latest = False 
 
 
